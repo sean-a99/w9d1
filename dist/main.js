@@ -9,6 +9,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/asteroid.js":
+/*!*************************!*\
+  !*** ./src/asteroid.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _moving_object_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n/* harmony import */ var _moving_object_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_moving_object_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n\r\n\r\n//import scale from \"./utils.js\";\r\n\r\n//const MovingObject = require('./moving_objects.js');\r\n\r\nclass Asteroid extends (_moving_object_js__WEBPACK_IMPORTED_MODULE_0___default()) {\r\n  static RADIUS = 25;\r\n  static COLOR = \"#3a4f45\";\r\n  constructor (args){\r\n    const obj = {\r\n      pos: args['pos'],\r\n      color: Asteroid.COLOR,\r\n      radius: Asteroid.RADIUS,\r\n      vel: (0,_utils_js__WEBPACK_IMPORTED_MODULE_1__.randomVec)(Math.random()*100)\r\n    } \r\n    super(obj);   \r\n  }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Asteroid);\n\n//# sourceURL=webpack://w9d1/./src/asteroid.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -16,7 +27,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _moving_object_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n/* harmony import */ var _moving_object_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_moving_object_js__WEBPACK_IMPORTED_MODULE_0__);\nconsole.log(\"Webpack is working!\");\n\n\n\nwindow.MovingObject = (_moving_object_js__WEBPACK_IMPORTED_MODULE_0___default());\n\nconst canvas = document.getElementById('game-canvas');\nconst ctx = canvas.getContext('2d');\nwindow.ctx = ctx;\n\n//# sourceURL=webpack://w9d1/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _moving_object_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\n/* harmony import */ var _moving_object_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_moving_object_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _asteroid_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\nconsole.log(\"Webpack is working!\");\n\n\nwindow.MovingObject = (_moving_object_js__WEBPACK_IMPORTED_MODULE_0___default());\n\n\nwindow.Asteroid = _asteroid_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\nconst canvas = document.getElementById('game-canvas');\nconst ctx = canvas.getContext('2d');\nwindow.ctx = ctx;\n\n//# sourceURL=webpack://w9d1/./src/index.js?");
 
 /***/ }),
 
@@ -27,6 +38,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mov
 /***/ ((module) => {
 
 eval("class MovingObject {\n    constructor(obj) {\n        this.pos = obj['pos'];\n        this.vel = obj['vel'];\n        this.radius = obj['radius'];\n        this.color = obj['color'];\n    }\n\n    draw(ctx) {\n        ctx.fillStyle = this.color;\n        ctx.beginPath();\n        ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, false);\n        ctx.stroke();\n        ctx.fill();\n    }\n\n    move() {\n        this.pos[0] += this.vel[0];\n        this.pos[1] += this.vel[1];\n    }\n}\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack://w9d1/./src/moving_object.js?");
+
+/***/ }),
+
+/***/ "./src/utils.js":
+/*!**********************!*\
+  !*** ./src/utils.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"randomVec\": () => (/* binding */ randomVec),\n/* harmony export */   \"scale\": () => (/* binding */ scale)\n/* harmony export */ });\n// src/util.js\r\n\r\n// Return a randomly oriented vector with the given length.\r\nfunction randomVec(length) {\r\n  const deg = 2 * Math.PI * Math.random();\r\n  return scale([Math.sin(deg), Math.cos(deg)], length);\r\n}\r\n\r\n// Scale the length of a vector by the given amount.\r\nfunction scale(vec, m) {\r\n  return [vec[0] * m, vec[1] * m];\r\n}\n\n//# sourceURL=webpack://w9d1/./src/utils.js?");
 
 /***/ })
 
